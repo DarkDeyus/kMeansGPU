@@ -122,8 +122,8 @@ int main()
 	kMeansCPU((double(*)[3])points, k, n, membership, (double(*)[3])centres);
 
 	std::chrono::duration<double> duration = (std::chrono::system_clock::now() - timer);
-
-	printf("CPU time was %l seconds\n", duration.count());
+	double timeCPU = duration.count();
+	printf("CPU time was %f seconds\n", timeCPU);
 
 	WriteResults(centres, k, dimension);
 	printf("-------------------------------------------------------------------\n");
@@ -145,8 +145,8 @@ int main()
 	float time;
 	cudaEventElapsedTime(&time, start, stop);
 
-	double gpuTime = time * 0.001;
-	printf("GPU time was %l seconds\n", time * 0.001);
+	double timeGPU = time * 0.001;
+	printf("GPU time was %f seconds\n", timeGPU);
 
 	WriteResults(centres, k, dimension);
 	
